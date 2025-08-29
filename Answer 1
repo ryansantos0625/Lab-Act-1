@@ -1,0 +1,47 @@
+<?php
+class Student {
+    private $name;
+    private $courses = [];
+    const COURSE_FEE = 1450;
+
+    public function __construct($name) {
+        $this->name = $name;
+    }
+
+    // Add a course
+    public function addCourse($course) {
+        $this->courses[] = $course;
+    }
+
+    // Remove a course
+    public function removeCourse($course) {
+        $index = array_search($course, $this->courses);
+        if ($index !== false) {
+            unset($this->courses[$index]);
+            $this->courses = array_values($this->courses);
+        }
+    }
+
+    // Get total fee
+    public function getTotalFee() {
+        return count($this->courses) * self::COURSE_FEE;
+    }
+
+    // Display student info
+    public function displayInfo() {
+        echo "Student: " . $this->name . "<br>";
+        echo "Courses: " . implode(", ", $this->courses) . "<br>";
+        echo "Total Fee: PHP " . $this->getTotalFee() . "<br>";
+    }
+}
+
+// Example usage
+$student = new Student("John Doe");
+$student->addCourse("Math");
+$student->addCourse("Science");
+$student->addCourse("English");
+
+$student->removeCourse("Science");
+
+$student->displayInfo();
+?>
