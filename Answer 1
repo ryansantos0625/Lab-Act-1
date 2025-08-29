@@ -1,0 +1,27 @@
+<?php
+class Rectangle {
+    private $width;
+    private $height;
+
+    // Constructor with default values
+    public function __construct($width = 1, $height = 1) {
+        $this->width = $width;
+        $this->height = $height;
+    }
+
+    // Method to calculate area
+    public function getArea() {
+        return $this->width * $this->height;
+    }
+
+    // Method to calculate perimeter
+    public function getPerimeter() {
+        return 2 * ($this->width + $this->height);
+    }
+}
+
+// Example usage
+$rect = new Rectangle(5, 10);
+echo "Area: " . $rect->getArea() . "<br>";
+echo "Perimeter: " . $rect->getPerimeter();
+?>
